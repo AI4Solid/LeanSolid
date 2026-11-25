@@ -31,6 +31,12 @@ The v0.1 target is December 9, 2026. The initial milestone is a reproducible bui
 
 Thanks to the [lean-mechanics contributors](https://github.com/raphos-com/lean-mechanics). Their Lean 4 and Mathlib library spans classical, continuum, and discrete mechanics, including constitutive theory, fracture, contact, and stability. LeanSolid starts with small constitutive examples and focuses on expressing assumptions and checking individual derivations, including those developed with AI assistance.
 
+## Maintainer
+
+Created and maintained by Siyuan Song ([@ssong26](https://github.com/ssong26)), a postdoctoral researcher in solid mechanics at Brown University.
+
+Interested in collaborating on formalizing solid mechanics in Lean? Feel free to [open a GitHub issue](https://github.com/ssong26/LeanSolid/issues).
+
 ## License
 
 [Apache-2.0](LICENSE).
