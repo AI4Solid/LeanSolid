@@ -1,4 +1,35 @@
 module
 
-public import LeanSolid.Constitutive.Uniaxial
 public import LeanSolid.Examples.Uniaxial
+public import LeanSolid.LinearElasticity
+public import LeanSolid.Elastostatics.Theorems
+public import LeanSolid.Elastostatics
+public import LeanSolid.Plane.Airy.Theorems
+public import LeanSolid.Math.RadialIntegrability
+public import LeanSolid.Elastostatics.ElasticForm.Theorems
+public import LeanSolid.AntiPlane.Corollaries
+public import LeanSolid.AntiPlane.Wedge.Corollaries
+public import LeanSolid.AntiPlane.ComplexPotential
+public import LeanSolid.AntiPlane.Crack.Theorems
+public import LeanSolid.AntiPlane.Inclusion.Theorems
+public import LeanSolid.Anisotropic.Stroh.Theorems
+public import LeanSolid.Elastostatics.Radial.Theorems
+public import LeanSolid.Elastostatics.Korn.Theorems
+public import LeanSolid.Elastostatics.Sobolev.Existence
+public import LeanSolid.Math.Calculus.PoincareStar
+public import LeanSolid.Plane.Airy.Corollaries
+public import LeanSolid.AntiPlane.Strip.Theorems
+public import LeanSolid.Elastostatics.FixedFace
+public import LeanSolid.Math.Calculus.EndpointTrace
+public import LeanSolid.Math.Calculus.FaceTrace
+public import LeanSolid.Math.Calculus.FaceTraceL2
+public import LeanSolid.Elastostatics.Sobolev.RectangleTrace
+public import LeanSolid.Math.CompactEstimate
+public import LeanSolid.Elastostatics.Sobolev.RectangleKorn
+public import LeanSolid.Elastostatics.Sobolev.RectangleCompactness
+public import LeanSolid.Elastostatics.Sobolev.RectangleAveraging
+public import LeanSolid.Elastostatics.Korn.Reflection
+public import LeanSolid.Elastostatics.Korn.RectangleExtension
+public import LeanSolid.Plane.Eshelby.Corollaries
+public import LeanSolid.Plane.Airy.Representation
+public import LeanSolid.Math.VectorL2

@@ -6,6 +6,21 @@ LeanSolid is a pre-alpha project for formalizing solid mechanics in Lean 4 with 
 
 - `LeanSolid.Constitutive.Uniaxial` defines scalar Hooke's law and quadratic elastic strain energy density. It proves the half-stress-times-strain identity and energy nonnegativity under a nonnegative Young's modulus.
 - `LeanSolid.Examples.Uniaxial` proves that stress determines strain uniquely when Young's modulus is strictly positive.
+- `LeanSolid.Math` provides Cartesian tensor definitions and algebraic properties.
+- `LeanSolid.LinearElasticity` separates small-strain isotropic elasticity definitions, theorems and corollaries.
+- `LeanSolid.Elastostatics` proves weak existence and uniqueness under explicit coercivity and verifies that condition for a bounded clamped Sobolev model with μ > 0 and λ + μ ≥ 0.
+
+See the [handoff](HANDOFF.md) for scope and progress and the [changelog](CHANGELOG.md) for recent updates. [ResearchCompanions](ResearchCompanions/) collects standalone Lean applications accompanying research in theoretical solid mechanics. Each companion has its own verification instructions and is outside the default `import LeanSolid` entry point.
+
+Brown ENGN 2240 course materials were used as local development references. Contact the maintainer for inquiries about the original materials.
+
+## Importing the library
+
+For classical results and the Lean declarations that prove them, see [LandmarkResults](LandmarkResults/).
+
+- `import LeanSolid.LinearElasticity` for small-strain kinematics, constitutive laws, compatibility, and Voigt notation.
+- `import LeanSolid.Elastostatics` for weak equilibrium, energy principles, Galerkin estimates, and supported boundary-value models.
+- `import LeanSolid` for all project modules and the examples.
 
 ## Build
 
@@ -22,7 +37,7 @@ The Lean toolchain and Mathlib revision are pinned. The build treats project war
 
 The v0.1 target is December 9, 2026. The initial milestone is a reproducible build and a small set of documented, checked linear-elastic examples. The broader roadmap covers the following areas.
 
-- **Linear elasticity.** Extend the scalar example to small-strain kinematics and tensor constitutive laws with explicit material assumptions.
+- **Linear elasticity.** Extend the clamped model to mixed and pure-traction Sobolev boundary-value problems and add checked applications.
 - **Fracture.** Formalize energy release and selected Griffith-type derivations.
 - **Interfaces.** Specify traction–separation laws and assumptions behind interface conditions.
 - **Instability.** Work through energy-based stability and elementary bifurcation examples.
