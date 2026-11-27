@@ -1,4 +1,4 @@
-# LeanSolid
+<h1><img src="assets/leansolid-gomboc.png" alt="LeanSolid" width="144"></h1>
 
 LeanSolid is a pre-alpha project for formalizing solid mechanics in Lean 4 with Mathlib. It aims to make modeling assumptions explicit, express constitutive laws as reusable definitions, verify derivations, and support AI-assisted reasoning with Lean as the proof checker.
 
