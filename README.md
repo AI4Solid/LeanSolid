@@ -21,6 +21,8 @@ Brown ENGN 2240 course materials were used as local development references. Cont
 
 For classical results and the Lean declarations that prove them, see [LandmarkResults](LandmarkResults/).
 
+For research questions and their source literature, see [Formalization of Open Problems in Solid Mechanics](OpenProblem/).
+
 - `import LeanSolid.LinearElasticity` for small-strain kinematics, constitutive laws, compatibility, and Voigt notation.
 - `import LeanSolid.Elastostatics` for weak equilibrium, energy principles, Galerkin estimates, and supported boundary-value models.
 - `import LeanSolid` for all project modules and the examples.
