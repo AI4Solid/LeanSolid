@@ -11,6 +11,45 @@ The initial milestone covers small-strain isotropic elasticity. A lecture-driven
 | `LeanSolid/Elastostatics/` | Weak equilibrium, reciprocal work, minimum potential energy, Galerkin estimates, and existence and uniqueness for the bounded clamped Sobolev model. |
 | `LeanSolid/Constitutive/Uniaxial.lean` and `LeanSolid/Examples/Uniaxial.lean` | Existing scalar example and original import paths. |
 
+## Continuum mechanics
+
+- [Definitions](LeanSolid/ContinuumMechanics/Definitions.lean) use Cartesian reference and spatial coordinates with `F i j = ∂χᵢ/∂Xⱼ`. The signed Jacobian is `det F`. Physical orientation preservation requires `0 < det F`; pointwise stress inversion requires `det F ≠ 0`.
+- [Kinematic theorems](LeanSolid/ContinuumMechanics/Theorems.lean) prove the affine and composition rules for `F`, the identity `F = I + Grad u`, and invariance of the right Cauchy–Green tensor and Green–Lagrange strain under a superposed orthogonal spatial transformation.
+- [Statics](LeanSolid/ContinuumMechanics/Statics.lean) uses nominal traction `P N` and the strong balance `Div P + b = 0`, where `b` is force per unit reference volume. It verifies the pointwise cofactor formula for nominal traction and the correspondence between symmetry of `P Fᵀ` and symmetry of Cauchy stress. The differential Piola identity, boundary integral transformation, and well-posedness of finite-deformation boundary-value problems remain open.
+- [Corollaries](LeanSolid/ContinuumMechanics/Corollaries.lean) verify the small-strain term in the exact Green–Lagrange expansion and unloaded bulk equilibrium for an affine placement with uniform symmetric Cauchy stress. The existing LinearElasticity entry points for Green–Lagrange strain and displacement gradient share the continuum definitions.
+
+## Biot surface bifurcation — paused
+
+- [Biot.lean](LeanSolid/ContinuumMechanics/Hyperelasticity/Biot.lean) verifies the depth equation and free-surface traction conditions for each positive horizontal wavenumber, and proves the critical quartic criterion for nonzero decaying profiles.
+- [BiotFourier.lean](LeanSolid/ContinuumMechanics/Hyperelasticity/BiotFourier.lean) proves continuous Fourier decomposition and pointwise reconstruction for sufficiently smooth, horizontally integrable perturbations of the two-dimensional half-space with depth decay. See `BiotFourierProblem.decompose` and `BiotFourierProblem.critical_of_nonzero`. The last full `lake build` passed (6776 jobs).
+- When resumed, derive the depth equation and both free-surface conditions for each coefficient of a horizontal Fourier series. Treat the zero coefficient separately, reuse the positive-wavenumber criterion for nonzero indices, and prove reconstruction in a stated convergence mode. Import the periodic result through the continuum module and check it with `lake build`.
+
+## Rate kinematics
+
+- [Polar kinematics](LeanSolid/ContinuumMechanics/Polar.lean) proves the positivity of both Cauchy–Green tensors for nonsingular deformations, defines principal stretches from the spectrum of the right tensor, verifies the left and right polar factorizations and right-factor uniqueness, and relates Euler–Almansi strain to Green–Lagrange strain by pullback. Positive `J` makes the polar factor a proper rotation.
+- [Oriented area](LeanSolid/ContinuumMechanics/Area.lean) proves pointwise Nanson for a pair of surface tangents in 3D using cofactors. The result gives the same force from a spatial area vector with Cauchy stress and a reference area vector with first Piola stress. This uses pointwise vectors. Surface-integral change of variables remains separate.
+- [Geometry rates](LeanSolid/ContinuumMechanics/GeometryRates.lean) proves the inverse deformation-gradient rate and the rate of a spatial oriented area vector for a nonsingular 3D deformation path with fixed reference tangents. The area rate is `q̇ = (tr L) q − Lᵀq`.
+- [Differential Piola identity](LeanSolid/ContinuumMechanics/Piola.lean) proves zero reference divergence of the cofactor of a 3D Cartesian placement with C² components, including singular gradients. It also gives the equivalent `Div(J F⁻ᵀ) = 0` under everywhere nonsingular deformation gradients.
+
+- [Tensor paths](LeanSolid/Math/Calculus/TensorPath.lean) provide entrywise derivatives at arbitrary times and the tensor product rule. The existing hyperelasticity path derivatives use this common definition at time zero.
+- [Motion rates](LeanSolid/ContinuumMechanics/Rates.lean) define material velocity and the rate of the deformation gradient at fixed material position. Joint `C²` regularity of the motion gives `Ḟ = Grad_X V`. Given a differentiable spatial velocity whose pullback is the material velocity, the chain rule yields `Ḟ = (grad_x v) F`.
+- For nonsingular `F`, the reconstructed spatial velocity gradient is `L = Ḟ F⁻¹`, with `D = sym L` and spin `W = skew L`. The verified rates include `Ė = Fᵀ D F`, `Ḃ = LB + BLᵀ`, and in 3D `J̇ = J tr L`. The cofactor derivative of the determinant is also available at singular 3D tensors.
+- Under a time-dependent superposed orthogonal spatial transformation, the product rule gives `Ḟ* = Q̇ F + Q Ḟ`. The angular rate `Q̇ Qᵀ` is skew, so `L* = QLQᵀ + Q̇ Qᵀ`, `D* = QDQᵀ`, and `W* = QWQᵀ + Q̇ Qᵀ`. The material Green–Lagrange rate is invariant. [Observer transformation conventions](https://archive.nptel.ac.in/content/storage2/courses/112103167/module4/lec31.pdf)
+
+## Stored energy and material symmetry
+
+- [Objectivity](LeanSolid/ContinuumMechanics/Objectivity.lean) defines frame-indifferent energy for proper spatial rotations, derives the first Piola and Cauchy stress transformations, and proves the Jaumann rate transformation along a material path with a time-dependent observer.
+- [Local balances](LeanSolid/ContinuumMechanics/Balance.lean) proves equivalence of the three stress-power pairings for symmetric second Piola stress and nonsingular deformation. It also connects the material derivative of reference density to the spatial continuity equation in 3D.
+- [Transport](LeanSolid/ContinuumMechanics/Transport.lean) gives the scalar material derivative chain rule and the bulk volume change-of-variables formula. Scalar Reynolds transport on a moving three-dimensional material region follows under injectivity, positive Jacobian, and explicit measurability and domination hypotheses.
+- [Boundary flux](LeanSolid/ContinuumMechanics/BoundaryFlux.lean) derives the Reynolds boundary formula when the current region is a Cartesian box at the evaluation time. It uses the divergence theorem and opposite-face integrals. The main result takes the reference-coordinate transport theorem and the identification of its material rates with the corresponding spatial fields as premises. General moving-boundary flux and surface-integral change of variables remain open.
+
+- [Principal invariants](LeanSolid/ContinuumMechanics/Invariants.lean) define `I₁ = tr A`, `I₂ = ((tr A)² − tr(A²))/2`, and `I₃ = det A` in 3D. All three are invariant under orthogonal conjugation. They can be evaluated on Green–Lagrange strain or either Cauchy–Green tensor. For the right Cauchy–Green tensor, `I₃(C) = J²`.
+- [Hyperelasticity](LeanSolid/ContinuumMechanics/Hyperelasticity/Theorems.lean) represents the derivative of a Fréchet-differentiable stored energy by a Frobenius gradient. Energy is per unit reference volume. With symmetric gradients, the chain rules give `S = ∂W/∂E`, `S = 2∂W/∂C`, and `P = FS`. Recovery of `S` from `P` requires `J ≠ 0`, and the Cauchy push-forward is `σ = J⁻¹FSFᵀ`.
+- The invariant chain rule differentiates `I₁`, `I₂`, and `I₃` with tensor gradients `I`, `tr(A)I − Aᵀ`, and `cof A`. The cofactor formula holds even at singular arguments. [Constitutive models](LeanSolid/ContinuumMechanics/Hyperelasticity/Models.lean) apply the derivatives to Saint Venant–Kirchhoff and logarithmic compressible neo-Hookean energy. The logarithmic model uses `I₃(C) > 0` and the physical deformation domain takes `J > 0`.
+- [Fourth-order stiffness](LeanSolid/LinearElasticity/Stiffness.lean) proves that the output minor symmetry gives symmetric stress and the input minor symmetry discards the skew strain. Major symmetry gives reciprocal work and makes the stiffness action the derivative of quadratic energy. The minor symmetries make the six unordered index pairs sufficient in 3D. With major symmetry, the resulting Voigt matrix is symmetric, with 21 independent entries. Energy positivity on nonzero symmetric strain is equivalent to positivity on nonzero engineering Voigt vectors. For the Lamé tensor it is equivalent to `μ > 0` and `3λ + 2μ > 0`.
+- [Material symmetry reductions](LeanSolid/LinearElasticity/Cubic.lean) use reflections in material axes to obtain the nine-constant orthotropic form and add cyclic permutation symmetry to obtain the three-constant cubic form. The cubic quadratic form splits into volumetric, deviatoric-normal, and shear contributions, yielding `C₁₁ + 2C₁₂ > 0`, `C₁₁ − C₁₂ > 0`, and `C₄₄ > 0` as necessary and sufficient conditions. [Crystal stability criteria](https://doi.org/10.1103/PhysRevB.90.224104)
+- The general energy-positivity theorem connects to Mathlib's `Matrix.PosDef`. Closed-form orthotropic criteria and transverse isotropy remain to be formalized. The hyperelastic results concern first derivatives of stored energy. The finite-strain tangent stiffness and strong ellipticity remain open.
+
 ## Assumptions and open work
 
 - The [upstream attribution record](docs/LINEAR_ELASTICITY_UPSTREAM.md) identifies the pinned lean-mechanics revision, source files, and the LeanSolid adaptations used for Linear Elasticity 1.
@@ -27,6 +66,8 @@ The initial milestone covers small-strain isotropic elasticity. A lecture-driven
 - The future checks on multiplicative elastoplastic kinematics and the HRR exponent sit outside this linear-elastic milestone.
 
 ## Local build
+
+The Brown ENGN 2210 continuation adds parameterized surface flux and the Piola divergence transform, including the divergence theorem on positively oriented smooth images of boxes. It also adds constrained hyperelasticity examples, finite-strain first variation, eigenstrain energy and a spherical inclusion, linear complementary energy, reduced Newtonian flows, and elastic waves. The local course review records the verified hypotheses and outstanding lecture material.
 
 With Lean 4.36.0, run `lake exe cache get` and `lake build` from the repository. This Windows checkout reuses the same Mathlib revision from the surrounding Lean workspace via a local junction at the ignored `.lake/packages` path. A fresh checkout uses normal Lake dependency setup.
 

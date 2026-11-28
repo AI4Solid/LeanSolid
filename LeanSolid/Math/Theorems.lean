@@ -27,6 +27,18 @@ theorem contract_self_nonneg (A : Tensor n) : 0 ≤ contract A A := by
 theorem contract_comm (A B : Tensor n) : contract A B = contract B A := by
   simp [contract, mul_comm]
 
+theorem contract_eq_trace (A B : Tensor n) : contract A B = (A.transpose * B).trace := by
+  unfold contract Matrix.trace
+  rw [Finset.sum_comm]
+  rfl
+
+/-- Transposing either factor has the same effect on the Frobenius contraction. -/
+theorem contract_transpose_left (A B : Tensor n) :
+    contract A.transpose B = contract A B.transpose := by
+  unfold contract
+  rw [Finset.sum_comm]
+  rfl
+
 theorem symPart_add_skewPart (A : Tensor n) : symPart A + skewPart A = A := by
   ext i j
   simp [symPart, skewPart, smul_eq_mul]
@@ -59,6 +71,21 @@ theorem contract_add_right (A B C : Tensor n) :
 theorem contract_smul_right (c : ℝ) (A B : Tensor n) :
     contract A (c • B) = c * contract A B := by
   rw [contract_comm A, contract_smul_left, contract_comm B]
+
+theorem contract_symPart_of_symmetric (A B : Tensor n) (hB : B.transpose = B) :
+    contract (symPart A) B = contract A B := by
+  rw [symPart, contract_smul_left, contract_add_left, contract_transpose_left, hB]
+  ring
+
+theorem contract_skewPart_of_skew (A B : Tensor n) (hB : B.transpose = -B) :
+    contract (skewPart A) B = contract A B := by
+  have hneg (C : Tensor n) : contract C (-B) = -contract C B := by
+    simp [contract, mul_neg]
+  have hsub : contract (A - A.transpose) B =
+      contract A B - contract A.transpose B := by
+    simp [contract, sub_mul, Finset.sum_sub_distrib]
+  rw [skewPart, contract_smul_left, hsub, contract_transpose_left, hB, hneg]
+  ring
 
 theorem contract_self_pos (A : Tensor n) (hA : A ≠ 0) : 0 < contract A A := by
   classical

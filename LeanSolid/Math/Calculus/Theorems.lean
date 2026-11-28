@@ -11,6 +11,11 @@ open scoped ContDiff
 
 namespace LeanSolid.Math
 
+/-- Partial derivative of a Cartesian coordinate function. -/
+theorem partial_coord {n : ℕ} (i j : Fin n) (x : Vector n) :
+    partialDeriv (fun y => y i) j x = (Pi.single j (1 : ℝ) : Vector n) i := by
+  simp [partialDeriv, (hasFDerivAt_apply i x).fderiv]
+
 variable {n : ℕ} {f : Vector n → ℝ}
 
 theorem contDiff_partial {k m : WithTop ℕ∞} (hf : ContDiff ℝ m f)

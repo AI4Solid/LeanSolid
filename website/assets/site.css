@@ -22,3 +22,19 @@ main section:not(.hero){padding-block:2.65rem;border-bottom:1px solid var(--line
 .source-card p{color:var(--muted)}
 .source-card:hover{border-color:var(--accent)}
 .source-card:hover h3,.source-card:focus-visible h3{text-decoration:underline;text-underline-offset:.22em}
+.metrics-table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.65rem;box-shadow:0 .3rem 1.2rem #112f2b0d}
+.metrics-table-scroll:focus-visible{outline:3px solid #00a480;outline-offset:4px}
+.metrics-table{width:100%;min-width:42rem;border-collapse:collapse;background:var(--white);text-align:left;line-height:1.5}
+.metrics-table th,.metrics-table td{padding:.9rem 1.15rem;vertical-align:top}
+.metrics-table thead{background:var(--dark);color:var(--white)}
+.metrics-table thead th{font-size:.88rem;font-weight:650}
+.metrics-table tbody tr+tr{border-top:1px solid var(--line)}
+.metrics-table tbody tr:nth-child(even){background:#f1f7f4}
+.metrics-table tbody th{width:22%;font-weight:700;color:var(--accent)}
+.metrics-table td:nth-child(2){width:23%;font-weight:650;font-variant-numeric:tabular-nums;color:var(--dark)}
+.metrics-table code{padding:.08em .32em;border-radius:.22rem;background:#e5f0ec;color:var(--dark);font-size:.88em}
+.metrics-build{display:inline-block;margin-inline-start:.35rem;vertical-align:middle}
+.metrics-build img{display:block;height:1.25rem;width:auto}
+.course-reference{padding-top:.65rem;border-top:1px solid var(--line);color:var(--accent);font-size:.9rem;font-weight:650}
+.teaching-note{margin:1rem 0 0;color:var(--muted)}
+@media(max-width:45rem){.metrics-table th,.metrics-table td{padding:.75rem .9rem}}

@@ -1,6 +1,6 @@
 module
 
-public import LeanSolid.Math.Calculus.Definitions
+public import LeanSolid.ContinuumMechanics.Definitions
 
 @[expose] public section
 
@@ -14,7 +14,7 @@ noncomputable def strain {n : ℕ} (gradient : Tensor n) : Tensor n :=
 
 /-- Green–Lagrange strain for a Cartesian deformation gradient. -/
 noncomputable def greenStrain {n : ℕ} (F : Tensor n) : Tensor n :=
-  (1 / 2 : ℝ) • (F.transpose * F - 1)
+  ContinuumMechanics.greenStrain F
 
 /-- Three-dimensional bulk modulus associated with the Lamé pair. -/
 noncomputable def bulkModulus (lam mu : ℝ) : ℝ := lam + 2 * mu / 3
@@ -68,7 +68,7 @@ noncomputable def planeBlock (A : Tensor 2) (normal : ℝ) : Tensor 3 :=
 /-- Displacement gradient in the fixed Cartesian basis. -/
 noncomputable def displacementGradient {n : ℕ} (u : Vector n → Vector n)
     (x : Vector n) : Tensor n :=
-  Matrix.of fun i j => partialDeriv (fun y => u y i) j x
+  ContinuumMechanics.deformationGradient u x
 
 /-- Small strain of a displacement field. -/
 noncomputable def strainField {n : ℕ} (u : Vector n → Vector n) (x : Vector n) : Tensor n :=

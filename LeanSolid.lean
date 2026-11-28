@@ -1,6 +1,7 @@
 module
 
 public import LeanSolid.Examples.Uniaxial
+public import LeanSolid.ContinuumMechanics
 public import LeanSolid.LinearElasticity
 public import LeanSolid.Elastostatics.Theorems
 public import LeanSolid.Elastostatics

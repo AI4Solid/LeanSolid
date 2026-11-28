@@ -18,7 +18,85 @@
 <header><div class="wrap bar"><a class="brand" href="/" aria-label="AI4Solid home">AI<span>4</span>Solid</a><nav class="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/LeanSolid/" aria-current="page">LeanSolid</a><a href="/LeanSolid/OpenProblems/">OpenProblems</a><a href="/#research">Research</a><a href="/contact/">Contact &amp; Collaboration</a><a href="https://github.com/AI4Solid">GitHub</a></nav></div></header>
 <main id="content">
 <section class="hero"><div class="wrap hero-grid"><div><p class="kicker">AI4Solid project · Pre-alpha</p><h1>LeanSolid</h1><p>Formalizing solid mechanics in Lean 4 and Mathlib. LeanSolid makes modeling assumptions explicit and checks derivations against reusable definitions.</p><div class="actions"><a class="button" href="https://github.com/AI4Solid/LeanSolid">View on GitHub</a><a class="secondary" href="#quickstart">Build the library</a></div></div><img class="logo" src="assets/leansolid.png" alt="LeanSolid Gömböc logo"></div></section>
-<section id="scope"><div class="wrap"><h2>Implemented scope</h2><div class="grid"><article class="card"><h3>Constitutive laws</h3><p>Scalar Hooke's law, elastic energy, and strain recovery under a positive Young's modulus.</p></article><article class="card"><h3>Linear elasticity</h3><p>Small-strain kinematics, isotropic constitutive laws, compatibility, and Voigt notation.</p></article><article class="card"><h3>Elastostatics</h3><p>Weak equilibrium, energy principles, Galerkin estimates, and solvability under explicit assumptions.</p></article></div></div></section>
+<section id="scope">
+  <div class="wrap">
+    <h2>Implemented scope</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Constitutive laws</h3>
+        <p>Scalar Hooke's law, elastic energy, and strain recovery under a positive Young's modulus.</p>
+      </article>
+      <article class="card">
+        <h3>Linear elasticity</h3>
+        <p>Small-strain kinematics, isotropic constitutive laws, compatibility, and Voigt notation.</p>
+        <p class="course-reference">Teaching reference · Brown ENGN 2240, Linear Elasticity</p>
+      </article>
+      <article class="card">
+        <h3>Continuum mechanics</h3>
+        <p>Finite-deformation kinematics, stress measures, balance laws, and hyperelasticity.</p>
+        <p class="course-reference">Teaching reference · Brown ENGN 2210, Continuum Mechanics</p>
+      </article>
+      <article class="card">
+        <h3>Elastostatics</h3>
+        <p>Weak equilibrium, energy principles, Galerkin estimates, and solvability under explicit assumptions.</p>
+      </article>
+    </div>
+    <p class="compact teaching-note">The two Brown solid mechanics courses taught by Huajian Gao provide teaching references for these modules. Contributors can compare new lecture notes and other teaching materials with existing Lean proofs, verify derivations where the assumptions match, and register gaps for future formalization.</p>
+  </div>
+</section>
+<section id="metrics" aria-labelledby="metrics-title">
+  <div class="wrap">
+    <h2 id="metrics-title">Project metrics</h2>
+    <div class="metrics-table-scroll" role="region" aria-labelledby="metrics-title" tabindex="0">
+      <table class="metrics-table">
+        <thead>
+          <tr><th scope="col">Metric</th><th scope="col">Current</th><th scope="col">How it is counted</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Lean Declarations</th>
+            <td><!-- metric:declarations -->1,791<!-- /metric:declarations --></td>
+            <td>Named declarations with source ranges from library modules loaded by <code>import LeanSolid</code>, including definitions, theorems, structures and classes.</td>
+          </tr>
+          <tr>
+            <th scope="row">Verified Theorems</th>
+            <td><!-- metric:verified -->1,285 / 1,285<!-- /metric:verified --></td>
+            <td>Verified / total named library theorems and lemmas. Lean checks transitive axiom dependencies against <code>propext</code>, <code>Classical.choice</code> and <code>Quot.sound</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Formalized Papers</th>
+            <td><!-- metric:papers -->0 complete · 4 partial<!-- /metric:papers --></td>
+            <td>Coverage of papers and memoirs recorded in Landmark Results. Standalone research companions have separate verification records.</td>
+          </tr>
+          <tr>
+            <th scope="row">Landmark Results</th>
+            <td><!-- metric:landmarks -->4<!-- /metric:landmarks --></td>
+            <td>Classical results registered with a Lean proof in the <a href="https://github.com/AI4Solid/LeanSolid/tree/main/LandmarkResults">Landmark Results index</a>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Lines of Lean</th>
+            <td><!-- metric:lines -->18,100<!-- /metric:lines --></td>
+            <td>Lines containing code in <code>LeanSolid.lean</code> and <code>LeanSolid/**/*.lean</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Build Status</th>
+            <td>
+              <a class="metrics-build" href="https://github.com/AI4Solid/LeanSolid/actions/workflows/ci.yml" aria-label="View Lean CI workflow runs">
+                <img src="https://github.com/AI4Solid/LeanSolid/actions/workflows/ci.yml/badge.svg?branch=main" alt="Lean CI status">
+              </a>
+            </td>
+            <td>GitHub Actions runs <code>lake build</code> on the default branch.</td>
+          </tr>
+          <tr>
+            <th scope="row">Open Problems</th>
+            <td><!-- metric:problems -->5<!-- /metric:problems --></td>
+            <td>Registered questions in the <a href="OpenProblems/">OpenProblems Registry</a>, including entries with partial progress.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 <section id="documentation"><div class="wrap"><h2>Documentation and results</h2><div class="grid"><article class="card"><h3><a href="https://github.com/AI4Solid/LeanSolid#importing-the-library">Library documentation</a></h3><p>Find the module entry points and the scope of the current library.</p></article><article class="card"><h3><a href="https://github.com/AI4Solid/LeanSolid/tree/main/LandmarkResults">Landmark Results</a></h3><p>Follow classical results from their sources to their Lean proofs.</p></article><article class="card"><h3><a href="https://github.com/AI4Solid/LeanSolid/tree/main/ResearchCompanions">Research Companions</a></h3><p>Explore standalone research applications with their own verification instructions.</p></article></div></div></section>
 <section id="quickstart"><div class="wrap"><h2>Build the library</h2><p>Install <a href="https://github.com/leanprover/elan">Elan</a>, then run these commands. The repository pins its Lean and Mathlib versions.</p><pre><code>git clone https://github.com/AI4Solid/LeanSolid.git
 cd LeanSolid

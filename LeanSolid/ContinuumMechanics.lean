@@ -1,0 +1,41 @@
+module
+
+public import LeanSolid.ContinuumMechanics.Corollaries
+public import LeanSolid.ContinuumMechanics.Rates
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.Models
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.Applications
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.RivlinShear
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.BiotFourier
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.VolumetricIsochoric
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.PrincipalStretches
+public import LeanSolid.ContinuumMechanics.Hyperelasticity.Tangent
+public import LeanSolid.ContinuumMechanics.Objectivity
+public import LeanSolid.ContinuumMechanics.Balance
+public import LeanSolid.ContinuumMechanics.Polar
+public import LeanSolid.ContinuumMechanics.Area
+public import LeanSolid.ContinuumMechanics.Tetrahedron
+public import LeanSolid.ContinuumMechanics.Pillbox
+public import LeanSolid.ContinuumMechanics.Surface
+public import LeanSolid.ContinuumMechanics.GeometryRates
+public import LeanSolid.ContinuumMechanics.Piola
+public import LeanSolid.ContinuumMechanics.Transport
+public import LeanSolid.ContinuumMechanics.BoundaryFlux
+public import LeanSolid.ContinuumMechanics.PiolaFlux
+public import LeanSolid.ContinuumMechanics.PatchTransport
+public import LeanSolid.ContinuumMechanics.Momentum
+public import LeanSolid.ContinuumMechanics.EnergyBalance
+public import LeanSolid.ContinuumMechanics.NewtonianFluid
+public import LeanSolid.ContinuumMechanics.InviscidFlow
+public import LeanSolid.ContinuumMechanics.Variational
+
+public import LeanSolid.ContinuumMechanics.Mohr
+public import LeanSolid.ContinuumMechanics.Viscoelastic
+public import LeanSolid.ContinuumMechanics.Composites
+public import LeanSolid.ContinuumMechanics.OpenChannel
+public import LeanSolid.ContinuumMechanics.GeotechnicalStrength
+public import LeanSolid.ContinuumMechanics.StressCriteria
+public import LeanSolid.ContinuumMechanics.Hydrostatics
+public import LeanSolid.ContinuumMechanics.Thermoelastic
+public import LeanSolid.ContinuumMechanics.Ellipticity
+public import LeanSolid.ContinuumMechanics.BoundaryLayer
+public import LeanSolid.ContinuumMechanics.Seepage

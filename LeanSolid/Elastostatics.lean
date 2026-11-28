@@ -1,5 +1,9 @@
 module
 
+public import LeanSolid.Elastostatics.Eigenstrain
+public import LeanSolid.Elastostatics.SphericalInclusion
+public import LeanSolid.Elastostatics.ComplementaryEnergy
+
 public import LeanSolid.Elastostatics.Corollaries
 public import LeanSolid.Elastostatics.Galerkin
 public import LeanSolid.Elastostatics.Sobolev.Dirichlet.Theorems

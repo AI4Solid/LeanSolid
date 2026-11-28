@@ -9,10 +9,19 @@ import Mathlib.Analysis.Calculus.Deriv.Pow
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.FinCases
+import LeanSolid.ContinuumMechanics.Theorems
 
 public section
 
 namespace LeanSolid.LinearElasticity
+
+/-- Symmetric stress gives reciprocal normal components on two planes. -/
+theorem traction_dot_comm {n : ℕ} (σ : LeanSolid.Math.Tensor n)
+    (hσ : σ.transpose = σ) (a b : LeanSolid.Math.Vector n) :
+    dotProduct (traction σ a) b = dotProduct (traction σ b) a := by
+  unfold traction
+  rw [dotProduct_comm (Matrix.mulVec σ a), dotProduct_comm (Matrix.mulVec σ b)]
+  simpa only [hσ] using Matrix.dotProduct_transpose_mulVec σ b a
 
 open LeanSolid.Math
 
@@ -23,13 +32,8 @@ theorem strain_transpose (G : Tensor n) : (strain G).transpose = strain G :=
 
 /-- Exact linear-plus-quadratic expansion about the undeformed state. -/
 theorem greenStrain_one_add (G : Tensor n) :
-    greenStrain (1 + G) = strain G + (1 / 2 : ℝ) • (G.transpose * G) := by
-  have h : (1 + G).transpose * (1 + G) - 1 = (G + G.transpose) + G.transpose * G := by
-    rw [Matrix.transpose_add, Matrix.transpose_one, Matrix.add_mul]
-    simp only [one_mul, Matrix.mul_add, mul_one]
-    abel
-  rw [greenStrain, h, smul_add]
-  rfl
+    greenStrain (1 + G) = strain G + (1 / 2 : ℝ) • (G.transpose * G) :=
+  ContinuumMechanics.greenStrain_one_add G
 
 theorem stress_add (lam mu : ℝ) (A B : Tensor n) :
     stress lam mu (A + B) = stress lam mu A + stress lam mu B := by

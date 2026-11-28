@@ -1,5 +1,7 @@
 # Betti's Reciprocal Theorem
 
+<!-- metrics-paper: partial -->
+
 **Primary reference.** Enrico Betti, *Teoria della elasticità*, *Il Nuovo Cimento*, series 2, vols. 7–10 (1872–1873). Reprinted in *Opere matematiche*, vol. II (1913), pp. 291–378. The memoir develops mathematical elasticity and establishes reciprocity between two equilibrium states of the same elastic body. [Digitized collected edition](https://www.mm.bme.hu/~kossa/books/Betti%20-%201913%20-%20Opere%20Matematiche%20Vol%202.pdf)
 
 ## From the classical statement to Lean
